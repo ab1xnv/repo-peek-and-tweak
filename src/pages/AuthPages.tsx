@@ -9,6 +9,7 @@ import { cn } from "@/lib/utils";
 export const AuthContent = () => {
   const location = useLocation();
   const [isHovered, setIsHovered] = useState(false);
+  const [isForgotHovered, setIsForgotHovered] = useState(false);
   const isSignUp = location.pathname === "/signup";
 
   const handleSubmit = (e: React.FormEvent) => {
@@ -23,17 +24,14 @@ export const AuthContent = () => {
         <div className="absolute bottom-0 right-0 opacity-10 w-96 h-96 bg-white rounded-full -mr-48 -mb-48"></div>
         <div className="absolute top-20 left-20 opacity-10 w-64 h-64 bg-white rounded-full -ml-32 -mt-32"></div>
         
-        {!isSignUp && (
-          <>
-            <h1 className="text-5xl font-bold text-white mb-3">
-              Your <span className="text-orange-400">Trusted</span>
-            </h1>
-            <h1 className="text-5xl font-bold text-white mb-3">Cloud</h1>
-            <h1 className="text-5xl font-bold text-white mb-3">Modernization</h1>
-            <h1 className="text-5xl font-bold text-white mb-8">Partner</h1>
-            <div className="w-32 h-1 bg-orange-400"></div>
-          </>
-        )}
+        {/* Now we'll show the "Your trusted cloud partner" text on both pages */}
+        <h1 className="text-5xl font-bold text-white mb-3">
+          Your <span className="text-orange-400">Trusted</span>
+        </h1>
+        <h1 className="text-5xl font-bold text-white mb-3">Cloud</h1>
+        <h1 className="text-5xl font-bold text-white mb-3">Modernization</h1>
+        <h1 className="text-5xl font-bold text-white mb-8">Partner</h1>
+        <div className="w-32 h-1 bg-orange-400"></div>
       </div>
 
       {/* Right panel with form */}
@@ -229,7 +227,12 @@ export const AuthContent = () => {
 
             {!isSignUp && (
               <div className="flex justify-end">
-                <span className="text-sm text-gray-600 hover:text-gray-900 transition-colors duration-300 cursor-pointer">
+                <span 
+                  className="text-sm text-gray-600 hover:text-orange-500 transition-colors duration-300 cursor-pointer"
+                  onMouseEnter={() => setIsForgotHovered(true)}
+                  onMouseLeave={() => setIsForgotHovered(false)}
+                  style={{ color: isForgotHovered ? '#f97316' : '' }}
+                >
                   Forgot Password?
                 </span>
               </div>
@@ -248,12 +251,10 @@ export const AuthContent = () => {
               {isSignUp ? "Already have an account?" : "Don't have an account?"}{" "}
               <Link
                 to={isSignUp ? "/signin" : "/signup"}
-                className={cn(
-                  "font-medium transition-colors duration-300",
-                  isHovered ? "text-black" : "text-orange-500"
-                )}
+                className="font-medium transition-colors duration-300 hover:text-black text-orange-500"
                 onMouseEnter={() => setIsHovered(true)}
                 onMouseLeave={() => setIsHovered(false)}
+                style={{ color: isHovered ? '#000000' : '#f97316' }}
               >
                 {isSignUp ? "Sign-In" : "SignUp"}
               </Link>
