@@ -35,22 +35,15 @@ const AuthTransition: React.FC<TransitionProps> = ({ children }) => {
       className={`transition-all duration-500 ${transitionStage === "fadeOut" ? "opacity-0" : "opacity-100"}`}
       onAnimationEnd={handleAnimationEnd}
     >
-      <div className="h-screen flex overflow-hidden relative">
-        {/* Left panel with sliding animation */}
+      <div className="h-screen flex overflow-hidden">
         <div 
-          className={`w-[45%] absolute left-0 top-0 h-full transition-all duration-1000 ease-in-out transform ${
-            isSignUp ? "translate-x-full" : "translate-x-0"
-          } bg-gradient-to-br from-slate-800 to-slate-600 z-10`}
+          className={`w-[45%] transition-all duration-1000 ease-in-out transform ${
+            isSignUp ? "translate-x-[122.22%]" : "translate-x-0"
+          } bg-gradient-to-br from-slate-800 to-slate-600`}
         />
-        
-        {/* Right panel that moves with the sliding effect */}
-        <div 
-          className={`w-[55%] absolute right-0 top-0 h-full transition-all duration-1000 ease-in-out transform ${
-            isSignUp ? "translate-x-0" : "translate-x-0"
-          }`}
-        />
+        <div className="w-[55%]" />
       </div>
-      <div className="absolute inset-0 z-20">
+      <div className="absolute inset-0">
         {children}
       </div>
     </div>
