@@ -37,7 +37,7 @@ const AuthTransition: React.FC<TransitionProps> = ({ children }) => {
     >
       <div className="h-screen flex overflow-hidden">
         <div 
-          className={`w-[45%] transition-all duration-700 ease-in-out transform ${
+          className={`w-[45%] transition-all duration-1000 ease-in-out transform ${
             isSignUp ? "translate-x-[122.22%]" : "translate-x-0"
           } bg-gradient-to-br from-slate-800 to-slate-600`}
         />
